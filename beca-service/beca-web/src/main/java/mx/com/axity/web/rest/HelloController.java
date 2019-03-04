@@ -54,6 +54,18 @@ public class HelloController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/users_create", method = RequestMethod.POST, produces = "application/json")
+    public ResponseEntity createUser(@RequestBody UserTO userTO) {
+
+        LOG.info("User");
+        LOG.info(userTO.getName());
+        LOG.info(userTO.getAge());
+        LOG.info(userTO.getId());
+        LOG.info(userTO.getLastName());
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/test", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity test() {
         LOG.info("Se invoca /test");

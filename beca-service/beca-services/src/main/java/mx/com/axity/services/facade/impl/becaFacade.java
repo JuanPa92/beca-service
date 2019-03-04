@@ -40,4 +40,17 @@ public class becaFacade implements IbecaFacade {
 
         return result;
     }
+
+    @Override
+    public void createUser(UserTO userTO) {
+
+    }
+
+    @Override
+    public UserTO readUser(int id) {
+        UserDO userDO = this.becaService.readUser(id);
+        Type userTOType = new TypeToken<UserTO>() {}.getType();
+
+        return null;
+    }
 }

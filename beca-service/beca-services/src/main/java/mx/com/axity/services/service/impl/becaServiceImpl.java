@@ -48,4 +48,14 @@ public class becaServiceImpl implements IbecaService {
     public List<UserDO> getAllUsers() {
         return (List<UserDO>) this.userDAO.findAll();
     }
+
+    @Override
+    public void createUser(UserDO userDO) {
+
+    }
+
+    @Override
+    public UserDO readUser(int id) {
+        return (UserDO) this.userDAO.findById((long) id).get();
+    }
 }

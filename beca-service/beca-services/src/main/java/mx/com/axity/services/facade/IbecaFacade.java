@@ -10,4 +10,8 @@ public interface IbecaFacade {
 
     List<UserTO> getAllUsers();
 
+    void createUser(UserTO userTO);
+
+    UserTO readUser(int id);
+
 }

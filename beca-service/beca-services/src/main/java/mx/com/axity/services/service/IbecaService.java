@@ -17,6 +17,8 @@ public interface IbecaService {
 
     List<UserDO> getAllUsers();
 
+    void createUser(UserDO userDO);
 
+    UserDO readUser(int id);
 
 }
