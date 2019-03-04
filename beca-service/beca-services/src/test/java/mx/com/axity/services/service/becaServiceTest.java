@@ -8,6 +8,7 @@ import java.util.List;
 
 public class becaServiceTest extends BaseTest {
 
+    /*
     @Test
     public void exampleTest() {
 
@@ -15,6 +16,7 @@ public class becaServiceTest extends BaseTest {
 
         Assert.assertEquals(1, users.size());
     }
+    */
 
     @Test
     public void shouldReturnTheSumOfTwoNumbers(){
