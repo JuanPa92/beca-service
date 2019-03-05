@@ -21,4 +21,5 @@ public interface IbecaService {
     void updateUser(UserDO userDO);
     UserDO readUser(int id);
     void deleteUser(int id);
+
 }

@@ -27,6 +27,7 @@ public class RequestValidatorAspect {
             LOG.info("Exception Ocurred");
             LOG.info("Execution: {}", joinPoint.getSignature());
             LOG.info("Exception: {}", e.getMessage());
+            //ESTE BORRAR
             throw new BusinessException("Error", e);
         }
     }

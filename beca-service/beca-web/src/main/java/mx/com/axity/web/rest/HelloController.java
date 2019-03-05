@@ -40,6 +40,13 @@ public class HelloController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/update_user", method = RequestMethod.PUT, produces = "application/json")
+    public ResponseEntity updateUser(@RequestBody UserTO userTO) {
+        LOG.info("Se invoca /update_user");
+        this.IbecaFacade.updateUser(userTO);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/read_user", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<UserTO> readUser(@RequestParam(value = "id") int id) {
         LOG.info("Se invoca /read_user");

@@ -56,6 +56,7 @@ public class becaServiceImpl implements IbecaService {
 
     @Override
     public void updateUser(UserDO userDO) {
+        //this.userDAO.findById(userDO.getId());
         this.userDAO.save(userDO);
     }
 
@@ -68,4 +69,5 @@ public class becaServiceImpl implements IbecaService {
     public void deleteUser(int id) {
         this.userDAO.deleteById((long) id);
     }
+
 }
