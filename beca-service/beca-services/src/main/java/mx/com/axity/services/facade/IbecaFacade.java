@@ -11,7 +11,8 @@ public interface IbecaFacade {
     List<UserTO> getAllUsers();
 
     void createUser(UserTO userTO);
-
+    void updateUser(UserTO userTO);
     UserTO readUser(int id);
+    void deleteUser(int id);
 
 }

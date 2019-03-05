@@ -33,6 +33,27 @@ public class HelloController {
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/create_user", method = RequestMethod.POST, produces = "application/json")
+    public ResponseEntity createUser(@RequestBody UserTO userTO) {
+        LOG.info("Se invoca /create_user");
+        this.IbecaFacade.createUser(userTO);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/read_user", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<UserTO> readUser(@RequestParam(value = "id") int id) {
+        LOG.info("Se invoca /read_user");
+        UserTO user = this.IbecaFacade.readUser(id);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/delete_user", method = RequestMethod.DELETE, produces = "application/json")
+    public ResponseEntity deleteUser(@RequestParam(value = "id") int id) {
+        LOG.info("Se invoca /delete_user");
+        this.IbecaFacade.deleteUser(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/users", method = RequestMethod.POST, produces = "application/json")
     public ResponseEntity saveUser(@RequestBody UserTO userTO) {
 
@@ -50,18 +71,6 @@ public class HelloController {
 
         LOG.info("User id:");
         LOG.info(id);
-
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/users_create", method = RequestMethod.POST, produces = "application/json")
-    public ResponseEntity createUser(@RequestBody UserTO userTO) {
-
-        LOG.info("User");
-        LOG.info(userTO.getName());
-        LOG.info(userTO.getAge());
-        LOG.info(userTO.getId());
-        LOG.info(userTO.getLastName());
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
