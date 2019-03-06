@@ -49,6 +49,8 @@ public class becaFacade implements IbecaFacade {
     }
 
     public void updateUser(UserTO userTO) {
+        this.becaService.readUser(userTO.getId());
+
         Type userDOType = new TypeToken<UserDO>(){}.getType();
         UserDO userDO = this.modelMapper.map(userTO, userDOType);
         this.becaService.updateUser(userDO);

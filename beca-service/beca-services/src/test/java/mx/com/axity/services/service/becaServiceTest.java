@@ -1,12 +1,45 @@
 package mx.com.axity.services.service;
 
 import mx.com.axity.commons.to.UserTO;
+import mx.com.axity.model.UserDO;
 import mx.com.axity.services.BaseTest;
 import org.junit.Assert;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
 
 public class becaServiceTest extends BaseTest {
+
+    //static final Logger log = LogManager.getLogger(becaServiceImpl.class);
+
+    @Autowired
+    IbecaService ibecaService;
+
+    @Test
+    public void updateExisteRegistro(){
+        //Exito -> Registro existe y se actualiza
+        UserDO userDO = this.ibecaService.readUser(7);
+
+        Assert.assertTrue( userDO!=null );
+        Assert.assertTrue( new Long(7).equals(userDO.getId()));
+        Assert.assertTrue("numero 7".equals(userDO.getName()));
+    }
+
+    @Test
+    public void updateNoExisteRegistro(){
+
+        try {
+            UserDO userDO = this.ibecaService.readUser(777);
+        }
+        catch (Throwable e){
+            Assert.assertTrue(e instanceof NoSuchElementException);
+        }
+
+    }
 
     /*
     @Test
@@ -16,7 +49,7 @@ public class becaServiceTest extends BaseTest {
 
         Assert.assertEquals(1, users.size());
     }
-    */
+
 
     @Test
     public void shouldReturnTheSumOfTwoNumbers(){
@@ -55,4 +88,8 @@ public class becaServiceTest extends BaseTest {
 
         Assert.assertEquals(10, result);
     }
+
+    */
+
+
 }
