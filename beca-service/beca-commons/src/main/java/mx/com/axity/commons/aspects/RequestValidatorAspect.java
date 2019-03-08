@@ -35,12 +35,12 @@ public class RequestValidatorAspect {
 
             if (e instanceof NoSuchElementException){
                 errorTO = new ErrorTO();
-                errorTO.setErrorCode((long) 25);
+                errorTO.setErrorCode((long) 404);
                 errorTO.setErrorMessage("No existe el elemento");
             }
             else{
                 errorTO = new ErrorTO();
-                errorTO.setErrorCode((long) 50);
+                errorTO.setErrorCode((long) 500);
                 errorTO.setErrorMessage("Error de servidor");
             }
 

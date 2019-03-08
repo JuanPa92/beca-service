@@ -3,7 +3,7 @@ package mx.com.axity.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "LOGIN", schema = "public")
+@Table(name = "login", schema = "public")
 public class LoginDO {
 
     @Id
@@ -11,9 +11,9 @@ public class LoginDO {
     @SequenceGenerator(name = "loginSeq", sequenceName = "login_id_seq", allocationSize = 1)
     @Column(name = "id")
     private Long id;
-    @Column(name = "user")
+    @Column(name = "ds_user")
     private String user;
-    @Column(name = "password")
+    @Column(name = "ds_password")
     private String password;
 
 

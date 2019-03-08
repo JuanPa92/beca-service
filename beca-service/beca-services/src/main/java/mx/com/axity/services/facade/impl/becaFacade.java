@@ -95,6 +95,6 @@ public class becaFacade implements IbecaFacade {
 
     @Override
     public void deleteLogin(int id) {
-        this.becaService.deleteUser(id);
+        this.becaService.deleteLogin(id);
     }
 }

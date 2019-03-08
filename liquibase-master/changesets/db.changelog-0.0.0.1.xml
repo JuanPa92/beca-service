@@ -22,5 +22,19 @@
         </createTable>
     </changeSet>
 
+    <changeSet author="juanPabloSaucedo" id="20190307-1">
+        <createTable tableName="LOGIN">
+            <column name="ID" type="INT" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" unique="false"/>
+            </column>
+            <column name="ds_user" type="VARCHAR(50)">
+                <constraints nullable="true" primaryKey="false" unique="false"/>
+            </column>
+            <column name="ds_password" type="VARCHAR(50)">
+                <constraints nullable="true" primaryKey="false" unique="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
 </databaseChangeLog>
  
