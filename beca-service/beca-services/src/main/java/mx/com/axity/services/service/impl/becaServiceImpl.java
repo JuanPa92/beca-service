@@ -76,6 +76,11 @@ public class becaServiceImpl implements IbecaService {
     }
 
     @Override
+    public List<LoginDO> getAllLogins() {
+        return (List<LoginDO>) this.loginDAO.findAll();
+    }
+
+    @Override
     public void createLogin(LoginDO loginDO) {
         this.loginDAO.save(loginDO);
     }
@@ -93,6 +98,13 @@ public class becaServiceImpl implements IbecaService {
     @Override
     public void deleteLogin(int id) {
         this.loginDAO.deleteById((long) id);
+    }
+
+    @Override
+    public boolean makeLogin(LoginDO loginDO) {
+        List<LoginDO> loginDOS = (List<LoginDO>) this.loginDAO.findAll();
+
+        return loginDOS.equals(loginDO);
     }
 
 }

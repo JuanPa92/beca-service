@@ -72,6 +72,16 @@ public class becaFacade implements IbecaFacade {
     }
 
     @Override
+    public List<LoginTO> getAllLogins() {
+        List<LoginDO> loginDOList = this.becaService.getAllLogins();
+
+        Type loginTOType = new TypeToken<List<LoginTO>>() {}.getType();
+        List<LoginTO> result = this.modelMapper.map(loginDOList, loginTOType);
+
+        return result;
+    }
+
+    @Override
     public void createLogin(LoginTO loginTO) {
         Type loginDOType = new TypeToken<LoginDO>(){}.getType();
         LoginDO loginDO = this.modelMapper.map(loginTO, loginDOType);
@@ -96,5 +106,13 @@ public class becaFacade implements IbecaFacade {
     @Override
     public void deleteLogin(int id) {
         this.becaService.deleteLogin(id);
+    }
+
+    @Override
+    public boolean makeLogin(LoginTO loginTO) {
+        Type loginDOType = new TypeToken<LoginDO>(){}.getType();
+        LoginDO loginDO = this.modelMapper.map(loginTO, loginDOType);
+
+        return this.becaService.makeLogin(loginDO);
     }
 }

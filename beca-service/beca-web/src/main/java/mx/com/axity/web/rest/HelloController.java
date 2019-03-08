@@ -100,6 +100,14 @@ public class HelloController {
      *
      * EMPIEZA CRUD DE LOGIN
      */
+
+    @RequestMapping(value = "/logins", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<List<LoginTO>> getAllLogins() {
+        LOG.info("Se invoca /logins");
+        List<LoginTO> logins = this.IbecaFacade.getAllLogins();
+        return new ResponseEntity<>(logins, HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/login", method = RequestMethod.POST, produces = "application/json")
     public ResponseEntity createLogin(@RequestBody LoginTO loginTO) {
         LOG.info("Se invoca /login");
@@ -125,6 +133,18 @@ public class HelloController {
     public ResponseEntity deleteLogin(@RequestParam(value = "id") int id) {
         LOG.info("Se invoca /login");
         this.IbecaFacade.deleteLogin(id);
+
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    //MAKE LOGIN
+
+    @RequestMapping(value = "/makelogin", method = RequestMethod.POST, produces = "application/json")
+    public ResponseEntity makeLogin(@RequestBody LoginTO loginTO) {
+        LOG.info("Se invoca /makelogin");
+        if (this.IbecaFacade.makeLogin(loginTO)){
+            return new ResponseEntity<>(HttpStatus.OK);
+        }else
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
 }

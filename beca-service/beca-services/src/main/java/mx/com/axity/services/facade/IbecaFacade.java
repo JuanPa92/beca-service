@@ -16,8 +16,12 @@ public interface IbecaFacade {
     UserTO readUser(int id);
     void deleteUser(int id);
 
+    List<LoginTO> getAllLogins();
+
     void createLogin(LoginTO loginTO);
     void updateLogin(LoginTO loginTO);
     LoginTO readLogin(int id);
     void deleteLogin(int id);
+
+    boolean makeLogin(LoginTO loginTO);
 }

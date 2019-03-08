@@ -23,9 +23,13 @@ public interface IbecaService {
     UserDO readUser(int id);
     void deleteUser(int id);
 
+    List<LoginDO> getAllLogins();
+
     void createLogin(LoginDO loginDO);
     void updateLogin(LoginDO loginDO);
     LoginDO readLogin(int id);
     void deleteLogin(int id);
+
+    boolean makeLogin (LoginDO loginDO);
 
 }
