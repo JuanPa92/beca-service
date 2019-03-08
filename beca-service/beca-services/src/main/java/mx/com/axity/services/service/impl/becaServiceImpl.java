@@ -1,7 +1,9 @@
 package mx.com.axity.services.service.impl;
 
 import mx.com.axity.commons.to.UserTO;
+import mx.com.axity.model.LoginDO;
 import mx.com.axity.model.UserDO;
+import mx.com.axity.persistence.LoginDAO;
 import mx.com.axity.persistence.UserDAO;
 import mx.com.axity.services.service.IbecaService;
 import org.apache.logging.log4j.LogManager;
@@ -20,6 +22,9 @@ public class becaServiceImpl implements IbecaService {
 
     @Autowired
     UserDAO userDAO;
+
+    @Autowired
+    LoginDAO loginDAO;
 
     @Autowired
     ModelMapper modelMapper;
@@ -68,6 +73,26 @@ public class becaServiceImpl implements IbecaService {
     @Override
     public void deleteUser(int id) {
         this.userDAO.deleteById((long) id);
+    }
+
+    @Override
+    public void createLogin(LoginDO loginDO) {
+        this.loginDAO.save(loginDO);
+    }
+
+    @Override
+    public void updateLogin(LoginDO loginDO) {
+        this.loginDAO.save(loginDO);
+    }
+
+    @Override
+    public LoginDO readLogin(int id) {
+        return (LoginDO) this.loginDAO.findById((long) id).get();
+    }
+
+    @Override
+    public void deleteLogin(int id) {
+        this.loginDAO.deleteById((long) id);
     }
 
 }

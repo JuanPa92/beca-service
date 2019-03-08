@@ -1,6 +1,8 @@
 package mx.com.axity.services.facade.impl;
 
+import mx.com.axity.commons.to.LoginTO;
 import mx.com.axity.commons.to.UserTO;
+import mx.com.axity.model.LoginDO;
 import mx.com.axity.model.UserDO;
 import mx.com.axity.services.facade.IbecaFacade;
 import mx.com.axity.services.service.IbecaService;
@@ -66,6 +68,33 @@ public class becaFacade implements IbecaFacade {
 
     @Override
     public void deleteUser(int id) {
+        this.becaService.deleteUser(id);
+    }
+
+    @Override
+    public void createLogin(LoginTO loginTO) {
+        Type loginDOType = new TypeToken<LoginDO>(){}.getType();
+        LoginDO loginDO = this.modelMapper.map(loginTO, loginDOType);
+        this.becaService.createLogin(loginDO);
+    }
+
+    @Override
+    public void updateLogin(LoginTO loginTO) {
+        Type loginDOType = new TypeToken<LoginDO>(){}.getType();
+        LoginDO loginDO = this.modelMapper.map(loginTO, loginDOType);
+        this.becaService.updateLogin(loginDO);
+    }
+
+    @Override
+    public LoginTO readLogin(int id) {
+        LoginDO loginDO = this.becaService.readLogin(id);
+        Type loginTOType = new TypeToken<LoginTO>() {}.getType();
+        LoginTO result = this.modelMapper.map(loginDO, loginTOType);
+        return result;
+    }
+
+    @Override
+    public void deleteLogin(int id) {
         this.becaService.deleteUser(id);
     }
 }

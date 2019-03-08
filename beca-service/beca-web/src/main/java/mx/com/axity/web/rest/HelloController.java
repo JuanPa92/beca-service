@@ -1,6 +1,7 @@
 package mx.com.axity.web.rest;
 
 import io.swagger.annotations.Api;
+import mx.com.axity.commons.to.LoginTO;
 import mx.com.axity.commons.to.UserTO;
 import mx.com.axity.services.facade.IbecaFacade;
 import org.apache.logging.log4j.LogManager;
@@ -93,5 +94,37 @@ public class HelloController {
         LOG.info("Se invoca /operation");
         int result = this.IbecaFacade.operation(5, 10);
         return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    /**
+     *
+     * EMPIEZA CRUD DE LOGIN
+     */
+    @RequestMapping(value = "/login", method = RequestMethod.POST, produces = "application/json")
+    public ResponseEntity createLogin(@RequestBody LoginTO loginTO) {
+        LOG.info("Se invoca /login");
+        this.IbecaFacade.createLogin(loginTO);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.PUT, produces = "application/json")
+    public ResponseEntity updateLogin(@RequestBody LoginTO loginTO) {
+        LOG.info("Se invoca /login");
+        this.IbecaFacade.updateLogin(loginTO);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<LoginTO> readLogin(@RequestParam(value = "id") int id) {
+        LOG.info("Se invoca /login");
+        LoginTO login = this.IbecaFacade.readLogin(id);
+        return new ResponseEntity<>(login, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.DELETE, produces = "application/json")
+    public ResponseEntity deleteLogin(@RequestParam(value = "id") int id) {
+        LOG.info("Se invoca /login");
+        this.IbecaFacade.deleteLogin(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

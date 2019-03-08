@@ -1,6 +1,7 @@
 package mx.com.axity.services.service;
 
 import mx.com.axity.commons.to.UserTO;
+import mx.com.axity.model.LoginDO;
 import mx.com.axity.model.UserDO;
 
 import java.util.List;
@@ -21,5 +22,10 @@ public interface IbecaService {
     void updateUser(UserDO userDO);
     UserDO readUser(int id);
     void deleteUser(int id);
+
+    void createLogin(LoginDO loginDO);
+    void updateLogin(LoginDO loginDO);
+    LoginDO readLogin(int id);
+    void deleteLogin(int id);
 
 }
